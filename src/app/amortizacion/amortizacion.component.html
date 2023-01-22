@@ -1,0 +1,40 @@
+<div class="container" id="contenedor">
+  <div class="row mt-5">
+    <div class="col-12">
+      <table class="table border border-dark">
+        <thead class="bg-dark text-white border border-dark">
+          <tr>
+            <th align="center">Fecha Vencimiento</th>
+            <th align="center">Cuota</th>
+            <th align="center">Cuota Amortizacion</th>
+            <th align="center">Cuota Interes</th>
+            <th align="center">Capital Pendiente</th>
+            <th align="center">Capital Amortizado</th>
+            <th align="center">Interes Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let amortizacion of tablaAmortizacion; let i = index">
+            <td class="border border-dark" align="center" [id]="i">
+              <strong>{{amortizacion.fecha | date: 'dd/MM/yyyy'}}</strong></td>
+            <td class="border border-dark" align="center">{{amortizacion.cuota}}
+            </td>
+            <td class="border border-dark" align="center">
+              {{amortizacion.amortizadoCuota}}</td>
+            <td class="border border-dark" align="center">
+              {{amortizacion.interesCuota}}</td>
+            <td class="border border-dark" align="center">
+              {{amortizacion.capitalPendiente}}</td>
+            <td class="border border-dark" align="center">
+              {{amortizacion.capitalAmortizado}}</td>
+            <td class="border border-dark" align="center">
+              {{amortizacion.interesesPagados}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn-flotante rounded-pill text-white" (click)="abrirModalAnticipo()">
+        Anticipar Capital
+      </button>
+    </div>
+  </div>
+</div>

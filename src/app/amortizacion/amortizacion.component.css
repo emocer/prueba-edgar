@@ -1,0 +1,14 @@
+.btn-flotante {
+	font-weight: bold;
+    width: 150px;
+    height: 50px;
+	border: 5px;
+	border-color: black;
+	background-color: rgb(9, 10, 9);
+	position: fixed;
+	bottom: 100px;
+	right: 30px;
+	justify-content: center;
+	align-items: center;
+	display: grid;
+}
