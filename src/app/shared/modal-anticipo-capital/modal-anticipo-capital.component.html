@@ -3,28 +3,28 @@
 </div>
 
 <div class="modal-content" style="border: none;">
-  <form class="form container-fluid">
+  <form class="form container-fluid" [formGroup]="RecalculoForm">
 
     <div class="py-2">
       <span><strong>Elige la fecha del anticipo:</strong></span>
-      <input type="date" class="form-control">
+      <input type="date" class="form-control" formControlName="fechaDeposito">
     </div>
 
     <div class="py-2">
       <span><strong>Indica la cantidad a depositar:</strong></span>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" formControlName="cantidadDeposito">
     </div>
 
     <div class="py-2">
       <span><strong>Escoge el resultado del anticipo:</strong></span>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="resultado" checked>
+        <input class="form-check-input" type="radio" name="resultado"  formControlName="resultado" value="true">
         <label class="form-check-label">
           Disminucion del importe de la cuota
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="resultado">
+        <input class="form-check-input" type="radio" name="resultado"  formControlName="resultado" value="false">
         <label class="form-check-label">
           Disminucion del numero de cuotas
         </label>
@@ -34,6 +34,11 @@
 </div>
 
 <div class="modal-footer border-0">
-  <button type="button" class="btn btn-dark text-white rounded-pill">Calcular</button>
+  <div class="col-10">
+    <span class="text-danger fw-bold" *ngIf="!formValid">
+      Todos los campos son obligatorios
+    </span>
+  </div>
+    <button type="button" class="btn btn-dark text-white rounded-pill" (click)="recalculoTabla()">Calcular</button>
 </div>
 

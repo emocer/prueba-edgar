@@ -30,10 +30,11 @@ export class AmortizacionComponent implements OnInit {
 
 
 
-  abrirModalAnticipo() {
+  async abrirModalAnticipo() {
 
-    this._modalService.open(ModalAnticipoCapitalComponent, this._modalOptions);
-    
+    let modalRef = this._modalService.open(ModalAnticipoCapitalComponent, this._modalOptions);
+    let datosRecalculo = await modalRef.result;
+    console.log(datosRecalculo);
   }
 
 }
