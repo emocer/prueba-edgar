@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -17,9 +17,9 @@ export class ModalAnticipoCapitalComponent implements OnInit {
     public _activeModalService: NgbActiveModal
   ) {
     this.RecalculoForm =  this._fbuilder.group({
-      fechaDeposito: [, Validators.required],
-      cantidadDeposito: [, Validators.required],
-      resultado: [, Validators.required]
+      fechaDeposito: new FormControl<Date>(new Date(), Validators.required),
+      cantidadDeposito: new FormControl<number>(0, Validators.required),
+      resultado: new FormControl<boolean>(false, Validators.required),
     })
   }
 
@@ -29,7 +29,6 @@ export class ModalAnticipoCapitalComponent implements OnInit {
 
     if(this.RecalculoForm.valid) {      
       this._activeModalService.close(this.RecalculoForm.value)
-      this.formValid = true;
     } else {
       this.formValid = false;
     }
